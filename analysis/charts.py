@@ -19,9 +19,9 @@ from analysis.metrics import (
 )
 
 
-PALETTE = px.colors.qualitative.Set2
-BENCHMARK_COLOR = "#636EFA"
-PORTFOLIO_COLOR = "#EF553B"
+PALETTE = ["#1e90ff", "#00bcd4", "#4fc3f7", "#38bdf8", "#818cf8", "#a78bfa", "#34d399", "#fb923c"]
+BENCHMARK_COLOR = "#94a3b8"
+PORTFOLIO_COLOR = "#1e90ff"
 
 
 def chart_cumulative_returns(
@@ -211,7 +211,7 @@ def chart_drawdown(
             name=f"{benchmark_ticker} Drawdown",
             fill="tozeroy",
             line=dict(color=BENCHMARK_COLOR, dash="dash", width=1.5),
-            fillcolor="rgba(99,110,250,0.15)",
+            fillcolor="rgba(148,163,184,0.12)",
             hovertemplate="%{y:.2f}%<extra>SPY Drawdown</extra>",
         ))
 
@@ -221,7 +221,7 @@ def chart_drawdown(
         name="Portfolio Drawdown",
         fill="tozeroy",
         line=dict(color=PORTFOLIO_COLOR, width=2),
-        fillcolor="rgba(239,85,59,0.2)",
+        fillcolor="rgba(30,144,255,0.18)",
         hovertemplate="%{y:.2f}%<extra>Portfolio Drawdown</extra>",
     ))
 
