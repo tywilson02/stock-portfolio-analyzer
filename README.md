@@ -1,6 +1,6 @@
-# Stock Portfolio Analyzer
+# AlphaTrack
 
-An interactive web dashboard for analyzing historical equity portfolio performance. Built with Python, Streamlit, and Plotly — fetches real market data from Yahoo Finance.
+Real-time portfolio tracking and performance analysis. An interactive web dashboard built with Python, Streamlit, and Plotly — fetches live market data from Yahoo Finance.
 
 ![Python](https://img.shields.io/badge/Python-3.11+-blue) ![Streamlit](https://img.shields.io/badge/Streamlit-1.35+-red) ![License](https://img.shields.io/badge/License-MIT-green)
 
@@ -8,12 +8,16 @@ An interactive web dashboard for analyzing historical equity portfolio performan
 
 ## Features
 
-- **Live market data** — pulls adjusted closing prices for any Yahoo Finance ticker
-- **Portfolio metrics** — returns, volatility, Sharpe ratio, max drawdown, correlation
-- **Interactive charts** — cumulative return, normalized price comparison, correlation heatmap, allocation pie, drawdown area chart
-- **Benchmark comparison** — portfolio performance measured against SPY (S&P 500 ETF)
-- **Custom weights** — equal-weight default with per-ticker sliders
-- **CSV export** — download the metrics table and raw price history
+- **Live market snapshot** — SPY, QQQ, and DIA prices with today's % change shown at the top of every page, refreshed every 5 minutes
+- **Historical price data** — pulls adjusted closing prices for any Yahoo Finance ticker across a custom date range
+- **Portfolio metrics** — total return, annualized return, volatility, Sharpe ratio, max drawdown, and correlation
+- **Auto-generated summary** — plain-English paragraph describing portfolio performance, benchmark comparison, and risk profile, generated dynamically from real values
+- **Best & worst performer callouts** — highlighted cards showing the top and bottom holdings by total return
+- **Interactive charts** — cumulative return vs. S&P 500, normalized price comparison, correlation heatmap, allocation pie, and drawdown area chart
+- **Benchmark comparison** — portfolio performance measured against SPY (S&P 500 ETF) throughout
+- **Custom weights** — equal-weight default with per-ticker sliders for custom allocations
+- **Reset button** — returns the app to its default state without restarting
+- **CSV export** — download the full metrics table and raw price history
 
 ---
 
@@ -27,8 +31,8 @@ An interactive web dashboard for analyzing historical equity portfolio performan
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/stock-portfolio-analyzer.git
-cd stock-portfolio-analyzer
+git clone https://github.com/your-username/alphatrack.git
+cd alphatrack
 
 python -m venv venv
 source venv/bin/activate        # Windows: venv\Scripts\activate
@@ -49,10 +53,13 @@ The dashboard opens automatically at `http://localhost:8501`.
 ## How to Use
 
 1. **Enter tickers** — type comma-separated symbols in the sidebar (e.g. `AAPL, MSFT, NVDA`)
-2. **Set a date range** — default is the past 3 years
+2. **Set a date range** — defaults to the past year; adjust start and end dates freely
 3. **Adjust weights** — toggle equal weight off to set custom allocations with sliders
-4. **Click Analyze Portfolio** — all charts and metrics update instantly
-5. **Export** — download metrics or raw prices as CSV
+4. **Click ▶ Analyze Portfolio** — fetches data, runs all calculations, and renders every chart and metric
+5. **Read the summary** — the auto-generated paragraph at the top gives a plain-English read of the results
+6. **Explore charts** — switch between the five chart tabs for different views of performance and risk
+7. **Export** — download metrics or raw prices as CSV
+8. **Click 🔄 Reset** — clears all results and returns to the default landing state
 
 ---
 
@@ -74,8 +81,8 @@ Risk-free rate used: **4.5% annualized** (approximate current U.S. T-bill yield)
 ## Project Structure
 
 ```
-stock-portfolio-analyzer/
-├── app.py                  # Streamlit UI — sidebar inputs, layout, tabs
+alphatrack/
+├── app.py                  # Streamlit UI — sidebar, market bar, KPIs, charts, export
 ├── data/
 │   └── fetcher.py          # yfinance wrapper with Streamlit caching
 ├── analysis/
