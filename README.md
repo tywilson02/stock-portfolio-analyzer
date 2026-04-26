@@ -29,7 +29,7 @@ A Python web app for analyzing equity portfolio performance. Enter a list of tic
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/alphatrack.git
+git clone https://github.com/tywilson02/alphatrack.git
 cd alphatrack
 
 python -m venv venv
